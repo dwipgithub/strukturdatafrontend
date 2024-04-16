@@ -22,7 +22,7 @@ const GetForm = () => {
 
     const getPenduduk = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/penduduk", {
+            const response = await axios.get("/api-strukturdata/penduduk", {
             });
             setPenduduk(response.data.data)
         } catch (error) { }
@@ -30,7 +30,7 @@ const GetForm = () => {
 
     const getAgama = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/agama", {
+            const response = await axios.get("/api-strukturdata/agama", {
             });
             setAgama(response.data.data)
             setAgamaId(response.data.data[0].id)
@@ -39,7 +39,7 @@ const GetForm = () => {
 
     const getProvinsi = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/provinsi", {
+            const response = await axios.get("/api-strukturdata/provinsi", {
             });
             setProvinsi(response.data.data)
             setProvinsiId(response.data.data[0].id)
@@ -56,7 +56,7 @@ const GetForm = () => {
 
     const terapkan = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/penduduk?urut=" + metodeUrut + urut, {
+            const response = await axios.get("/api-strukturdata/penduduk?urut=" + metodeUrut + urut, {
             });
             setPenduduk(response.data.data)
         } catch (error) { }
@@ -103,21 +103,22 @@ const GetForm = () => {
             alamat: alamat,
             provinsiId: provinsiId
         }
+
         const customConfig = {
             headers: {
                 'Content-Type': 'application/json'
             }
         }
         try {
-            await axios.post('http://localhost:5001/indonesia/penduduk',
+            await axios.post('/api-strukturdata/penduduk',
                 data,
                 customConfig)
                 alert('data berhasil disimpan')
                 setNIK('')
                 setNama('')
-                setAgamaId(1)
+                setAgamaId(agama[0].id)
                 setAlamat('')
-                setProvinsiId(1)
+                setProvinsiId(provinsi[0].id)
                 getPenduduk()
                 setFocusText(true)
         } catch (error) {

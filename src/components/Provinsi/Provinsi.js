@@ -15,7 +15,7 @@ const GetForm = () => {
 
     const getProvinsi = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/provinsi", {
+            const response = await axios.get("/api-strukturdata/provinsi", {
             });
             setProvinsi(response.data.data)
         } catch (error) { }
@@ -31,7 +31,7 @@ const GetForm = () => {
 
     const terapkan = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/provinsi?urut=" + metodeUrut + urut, {
+            const response = await axios.get("/api-strukturdata/provinsi?urut=" + metodeUrut + urut, {
             });
             setProvinsi(response.data.data)
         } catch (error) { }
@@ -65,7 +65,7 @@ const GetForm = () => {
             }
         }
         try {
-            await axios.post('http://localhost:5001/indonesia/Provinsi',
+            await axios.post('/api-strukturdata/Provinsi',
                 data,
                 customConfig)
                 alert('data berhasil disimpan')

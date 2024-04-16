@@ -15,7 +15,7 @@ const GetForm = () => {
 
     const getAgama = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/agama", {
+            const response = await axios.get("/api-strukturdata/agama", {
             });
             setAgama(response.data.data)
         } catch (error) { }
@@ -31,7 +31,7 @@ const GetForm = () => {
 
     const terapkan = async () => {
         try {
-            const response = await axios.get("http://localhost:5001/indonesia/agama?urut=" + metodeUrut + urut, {
+            const response = await axios.get("/api-strukturdata/agama?urut=" + metodeUrut + urut, {
             });
             setAgama(response.data.data)
         } catch (error) { }
@@ -65,7 +65,7 @@ const GetForm = () => {
             }
         }
         try {
-            await axios.post('http://localhost:5001/indonesia/agama',
+            await axios.post('/api-strukturdata/agama',
                 data,
                 customConfig)
                 alert('data berhasil disimpan')

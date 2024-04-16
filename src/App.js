@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
 import NavigationBar from './components/NavigationBar/NavBar'
 import AgamaHalaman from './components/Agama/Agama'
 import ProvinsiHalaman from './components/Provinsi/Provinsi'
@@ -6,7 +6,7 @@ import PendudukHalaman from './components/Penduduk/Penduduk'
 
 function App() {
     return (
-        <BrowserRouter>
+        <MemoryRouter history="/strukturdata">
             <Routes>
                 <Route path="/" element={<NavigationBar/>} />
                 <Route path="/beranda" element={<NavigationBar/>} />
@@ -15,7 +15,7 @@ function App() {
                 <Route path="/penduduk" element={<><NavigationBar/><PendudukHalaman/></>}/>
                 <Route path="*" element={<PageNotFound />} status={404}/>
             </Routes>
-        </BrowserRouter>
+        </MemoryRouter>
     )
 }
 
