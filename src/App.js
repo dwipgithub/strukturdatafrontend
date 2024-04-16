@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import NavigationBar from './components/NavigationBar/NavBar'
+import AgamaHalaman from './components/Agama/Agama'
+import ProvinsiHalaman from './components/Provinsi/Provinsi'
+import PendudukHalaman from './components/Penduduk/Penduduk'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<NavigationBar/>} />
+                <Route path="/beranda" element={<NavigationBar/>} />
+                <Route path="/agama" element={<><NavigationBar/><AgamaHalaman/></>}/>
+                <Route path="/provinsi" element={<><NavigationBar/><ProvinsiHalaman/></>}/>
+                <Route path="/penduduk" element={<><NavigationBar/><PendudukHalaman/></>}/>
+                <Route path="*" element={<PageNotFound />} status={404}/>
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+function PageNotFound() {
+    return (
+        <div className="container mt-3">
+            <h3>404 page not found</h3>
+            <p>We are sorry but the page you are looking for does not exist.</p>
+        </div>
+    );
 }
 
 export default App;
